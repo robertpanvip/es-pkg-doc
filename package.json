@@ -1,0 +1,57 @@
+{
+  "name": "es-pkg-doc",
+  "description": "es-pkg-doc",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "doc": "esno src/build.ts",
+    "server": "esno src/server/index.ts",
+    "dev": "esno src/ssr.ts"
+  },
+  "dependencies": {
+    "@types/convert-source-map": "^2.0.3",
+    "@types/cross-spawn": "^6.0.6",
+    "@types/etag": "^1.8.3",
+    "@types/express": "^4.17.21",
+    "@types/js-beautify": "^1.14.3",
+    "@types/turndown": "^5.0.4",
+    "etag": "^1.8.1",
+    "express": "^4.18.3",
+    "hotkeys-js": "^3.13.7",
+    "js-beautify": "^1.15.1",
+    "querystring": "^0.2.1",
+    "turndown": "^7.1.2",
+    "typedoc": "^0.25.9"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "cross-spawn": "^7.0.3",
+    "es-pkg": "latest",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "open": "^8.4.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-checker": "^0.6.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "es-pkg-doc"
+  ],
+  "homepage": "https://github.com/robertpanvip/es-pkg-doc.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertpanvip/es-pkg-doc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robertpanvip/es-pkg-doc/issues"
+  },
+  "author": "robertpanvip",
+  "license": "ISC"
+}

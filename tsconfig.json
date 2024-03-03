@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@jsx/*": ["./src/render/jsx/*"],
+    },
+    "target": "es2021",
+    "useDefineForClassFields": true,
+    "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "preserve",
+    "jsxFactory": "JSX.createElement",
+    "jsxFragmentFactory": "JSX.Fragment",
+    "jsxImportSource": "@jsx",
+    // Linting
+    "forceConsistentCasingInFileNames": true,
+    // Library
+    "preserveConstEnums": true,
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
