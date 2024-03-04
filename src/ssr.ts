@@ -2,38 +2,12 @@ import express, {RequestHandler} from 'express';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createServer as createViteServer, ViteDevServer} from 'vite';
+import {openBrowser, printServerUrls} from './utils/openBrowser.ts';
 import {Application, TSConfigReader} from "typedoc";
-import colors from 'picocolors'
 import {sm} from "@jsx/jsx-runtime.ts";
 
 const cwd = process.cwd();
 
-export interface ResolvedServerUrls {
-    local: string[]
-    network: string[]
-}
-
-export function printServerUrls(
-    urls: ResolvedServerUrls,
-    optionsHost: string | boolean | undefined,
-    info: typeof console.log,
-): void {
-    const colorUrl = (url: string) =>
-        colors.cyan(url.replace(/:(\d+)\//, (_, port) => `:${colors.bold(port)}/`))
-    for (const url of urls.local) {
-        info(`  ${colors.green('➜')}  ${colors.bold('Local')}:   ${colorUrl(url)}`)
-    }
-    for (const url of urls.network) {
-        info(`  ${colors.green('➜')}  ${colors.bold('Network')}: ${colorUrl(url)}`)
-    }
-    if (urls.network.length === 0 && optionsHost === undefined) {
-        info(
-            colors.dim(`  ${colors.green('➜')}  ${colors.bold('Network')}: use `) +
-            colors.bold('--host') +
-            colors.dim(' to expose'),
-        )
-    }
-}
 
 async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandler> {
 
@@ -41,11 +15,11 @@ async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandle
     // 主要用来处理客户端资源
     return async (req, res, next) => {
         const url = req.originalUrl;
-        
+
         if (url.startsWith("/___source")) {
             const id = req.query["id"] as string;
-            console.log('___update',id);
-             const info=sm.get(id)
+            console.log('___update', id);
+            const info = sm.get(id)
             return res.status(200).send(info)
         }
         if (!(url.endsWith("/") || url.endsWith("index.html"))) {
@@ -94,15 +68,18 @@ async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandle
 
 async function createServer() {
     const app = express();
-    const server = app.listen(3000, () => {
+    const port = 3000
+    const server = app.listen(port, () => {
+        const url = `http://localhost:${port}`
         printServerUrls(
             {
-                local: ["http://localhost:3000"],
+                local: [url],
                 network: [""]
             },
-            "http://localhost:3000",
+            url,
             console.info,
         )
+        openBrowser(url, true, console)
     });
     const vite = await createViteServer({
         root: './',

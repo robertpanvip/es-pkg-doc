@@ -27,7 +27,6 @@ async function main() {
     )
     const html = template
         .replace(`<!--ssr-outlet-->`, beautify.html(result.html, {indent_size: 2}))
-        .replace(`<!--ssr-script-->`, beautify.html(result.effects(), {indent_size: 2}))
 
     fs.writeFileSync(path.join(cwd, './components/index.html'), html)
 

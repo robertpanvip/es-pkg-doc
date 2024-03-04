@@ -60,7 +60,7 @@ export function index(context: DefaultThemeRenderContext, props: ContainerReflec
             <details class="tsd-index-content tsd-index-accordion" open={true}>
                 <summary class="tsd-accordion-summary tsd-index-summary">
                     <h5 class="tsd-index-heading uppercase" role="button" aria-expanded="false" tabIndex={0}>
-                        {context.icons.chevronSmall()} Index
+                        {context.icons.chevronSmall()} 导出的内容
                     </h5>
                 </summary>
                 <div class="tsd-accordion-details">{content}</div>

@@ -1,5 +1,5 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-import { JSX } from "../jsx";
+//import { JSX } from "../jsx";
 import type { DeclarationReflection, SignatureReflection, SourceReference } from "typedoc";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -35,12 +35,17 @@ function sourceLink(context: DefaultThemeRenderContext, item: SourceReference) {
     );*/
 }
 
+
 export const memberSources = (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     context: DefaultThemeRenderContext,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     props: SignatureReflection | DeclarationReflection,
 ) => {
-    const sources: JSX.Element[] = [];
-
+    return <></>
+    /*const sources: JSX.Element[] = [];
     if (props.implementationOf) {
         sources.push(
             <p>
@@ -73,5 +78,5 @@ export const memberSources = (
         return <></>;
     }
 
-    return <aside class="tsd-sources">{sources}</aside>;
+    return <aside class="tsd-sources">{sources}</aside>;*/
 };

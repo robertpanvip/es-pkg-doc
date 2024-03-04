@@ -1,6 +1,6 @@
-import { getKindClass, join, renderTypeParametersSignature, wbr } from "../utils/lib";
-import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-import { ParameterReflection, ReflectionKind, SignatureReflection } from "typedoc";
+import {getKindClass, join, renderTypeParametersSignature, wbr} from "../utils/lib";
+import type {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
+import {ParameterReflection, ReflectionKind, SignatureReflection} from "typedoc";
 
 function renderParameterWithType(context: DefaultThemeRenderContext, item: ParameterReflection) {
     return (
@@ -17,12 +17,13 @@ function renderParameterWithType(context: DefaultThemeRenderContext, item: Param
     );
 }
 
-function renderParameterWithoutType(item: ParameterReflection) {
+function renderParameterWithoutType(item: ParameterReflection, context: DefaultThemeRenderContext) {
     return (
         <>
             {!!item.flags.isRest && <span class="tsd-signature-symbol">...</span>}
             <span class="tsd-kind-parameter">{item.name}</span>
             {(item.flags.isOptional || item.defaultValue) && <span class="tsd-signature-symbol">?</span>}
+            :{context.type(item.type)}
         </>
     );
 }
@@ -30,11 +31,11 @@ function renderParameterWithoutType(item: ParameterReflection) {
 export function memberSignatureTitle(
     context: DefaultThemeRenderContext,
     props: SignatureReflection,
-    { hideName = false, arrowStyle = false }: { hideName?: boolean; arrowStyle?: boolean } = {},
+    {hideName = false, arrowStyle = false}: { hideName?: boolean; arrowStyle?: boolean } = {},
 ) {
     const hideParamTypes = context.options.getValue("hideParameterTypesInTitle");
-    const renderParam = hideParamTypes ? renderParameterWithoutType : renderParameterWithType.bind(null, context);
-    const name = props.name === 'default' ? (props.parent?.escapedName||props.name):props.name
+    const renderParam = hideParamTypes ? (item: ParameterReflection) => renderParameterWithoutType(item, context) : renderParameterWithType.bind(null, context);
+    const name = props.name === 'default' ? (props.parent?.escapedName || props.name) : props.name
     return (
         <>
             {!hideName ? (

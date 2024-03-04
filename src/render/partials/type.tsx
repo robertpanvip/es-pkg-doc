@@ -163,10 +163,10 @@ const typeRenderers: {
         );
     },
     intrinsic(_context, type) {
-        return <span class="tsd-signature-type">{type.name}</span>;
+        return <code class="tsd-signature-type">{type.name}</code>;
     },
     literal(_context, type) {
-        return <span class="tsd-signature-type">{stringify(type.value)}</span>;
+        return <code class="tsd-signature-type">{stringify(type.value)}</code>;
     },
     mapped(context, type) {
         indentationDepth++;
@@ -293,7 +293,7 @@ const typeRenderers: {
         } else if (type.refersToTypeParameter) {
             name = <span class="tsd-signature-type tsd-kind-type-parameter">{type.name}</span>;
         } else {
-            name = <span class="tsd-signature-type">{type.name}</span>;
+            name = <code class="tsd-signature-type">{type.name}</code>;
         }
 
         if (type.typeArguments?.length) {

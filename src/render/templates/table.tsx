@@ -95,8 +95,8 @@ export function tableTemplate(
           {!props.model.signatures && context.memberSources(props.model)}
         </>
       )}
-      3{!!props.model.children?.length && context.index(props.model)}4
-      {context.members(props.model)}5
+      {!!props.model.children?.length && context.index(props.model)}
+      {context.members(props.model)}
     </>
   );
 }

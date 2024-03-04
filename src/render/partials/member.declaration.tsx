@@ -1,6 +1,11 @@
 import type { DeclarationReflection, ReflectionType } from "typedoc";
 import { JSX } from "../jsx";
-import { getKindClass, hasTypeParameters, renderTypeParametersSignature, wbr } from "../utils/lib";
+import {
+   /* getKindClass, */
+    hasTypeParameters,
+    renderTypeParametersSignature,
+   /* wbr*/
+} from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 
 export function memberDeclaration(context: DefaultThemeRenderContext, props: DeclarationReflection) {
@@ -18,7 +23,7 @@ export function memberDeclaration(context: DefaultThemeRenderContext, props: Dec
     return (
         <>
             <div class="tsd-signature">
-                <span class={getKindClass(props)}>{wbr(props.name)}</span>
+               {/* <span class={getKindClass(props)}>{wbr(props.name)}</span>*/}
                 {renderTypeParametersSignature(context, props.typeParameters)}
                 {props.type && (
                     <>
@@ -36,7 +41,7 @@ export function memberDeclaration(context: DefaultThemeRenderContext, props: Dec
                 )}
             </div>
 
-            {context.commentSummary(props)}
+           {/* {context.commentSummary(props)}*/}
 
             {hasTypeParameters(props) && context.typeParameters(props.typeParameters)}
 
