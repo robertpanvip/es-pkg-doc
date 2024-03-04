@@ -64,7 +64,9 @@ export function member(context: DefaultThemeRenderContext, props: DeclarationRef
                                 <th>默认值</th>
                             </tr>
                             </thead>
-                            {props.groups?.map((item) => item.children.map((item) => !item.hasOwnDocument && context.member(item, true)))}
+                            <tbody>
+                                {props.groups?.map((item) => item.children.map((item) => !item.hasOwnDocument && context.member(item, true)))}
+                            </tbody>
                         </table>
                     )
                 }
