@@ -10,7 +10,6 @@ const cwd = process.cwd();
 
 // 定义全局函数
 global.JSX = JSX;
-
 async function main() {
     const file = path.join(cwd, './components/index.tsx')
     const app = await Application.bootstrap({
@@ -31,6 +30,7 @@ async function main() {
     fs.writeFileSync(path.join(cwd, './components/index.html'), html)
 
     const htmlToMdService = new HtmlToMdService()
+    htmlToMdService.keep(['table', 'thead', 'tbody', 'tr', 'th', 'td'] as const)
     const markdown = htmlToMdService.turndown(html)
     fs.writeFileSync(path.join(cwd, './components/index.md'), markdown)
 }
