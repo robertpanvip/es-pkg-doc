@@ -28,6 +28,8 @@ import {navigation, pageNavigation, pageSidebar, settings, sidebar, sidebarLinks
 import {toolbar} from "./partials/toolbar";
 import {indexTemplate} from "./templates";
 import {hierarchyTemplate} from "./templates/hierarchy";
+import {tableTemplate} from "./templates/table.tsx";
+
 import type {
     Options,
     RendererHooks,
@@ -295,6 +297,7 @@ export class DefaultThemeRenderContext {
         getReflectionClasses(df, {});
 
     reflectionTemplate = bind(reflectionTemplate, this);
+    tableTemplate = bind(tableTemplate, this);
     indexTemplate = bind(indexTemplate, this);
     hierarchyTemplate = bind(hierarchyTemplate, this);
     defaultLayout = bind(defaultLayout, this);

@@ -4,7 +4,6 @@ import path from 'node:path';
 import {createServer as createViteServer, ViteDevServer} from 'vite';
 import {Application, TSConfigReader} from "typedoc";
 import colors from 'picocolors'
-import {parse} from "./utils/cookie.ts";
 import {sm} from "@jsx/jsx-runtime.ts";
 
 const cwd = process.cwd();
@@ -42,13 +41,7 @@ async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandle
     // 主要用来处理客户端资源
     return async (req, res, next) => {
         const url = req.originalUrl;
-        const cookies = parse(req.headers.cookie)
-        if (!cookies["SSR-AUTH"]) {
-            global.Auth = Date.now()
-            res.cookie("SSR-AUTH", global.Auth)
-        } else {
-            global.Auth = parseInt(cookies["SSR-AUTH"])
-        }
+        
         if (url.startsWith("/___source")) {
             const id = req.query["id"] as string;
             console.log('___update',id);

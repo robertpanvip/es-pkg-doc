@@ -19,11 +19,14 @@
     "express": "^4.18.3",
     "hotkeys-js": "^3.13.7",
     "js-beautify": "^1.15.1",
+    "minimatch": "^9.0.3",
     "querystring": "^0.2.1",
+    "react": "^18.2.0",
     "turndown": "^7.1.2",
     "typedoc": "^0.25.9"
   },
   "devDependencies": {
+    "@types/react": "^18.2.61",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",

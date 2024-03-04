@@ -21,7 +21,7 @@ const code = res.outputFiles[0].text
 export function renderServer(project: ProjectReflection) {
     const page = new PageEvent(PageEvent.BEGIN, project!)
     const themeContext = new DefaultThemeRenderContext({url: '', options: new Options(), page: page});
-    const templateOutput = themeContext.reflectionTemplate(page);
+    const templateOutput = themeContext.tableTemplate(page);
     const html = JSX.renderToString(templateOutput);
     const debug: Record<string, DebugInfo> = {}
     sm.forEach((item, key) => {
