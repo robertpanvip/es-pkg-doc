@@ -29,11 +29,21 @@ async function main() {
 
     fs.writeFileSync(path.join(cwd, './components/index.html'), html)
 
-    const htmlToMdService = new HtmlToMdService()
-    htmlToMdService.keep(['table', 'thead', 'tbody', 'tr', 'th', 'td'] as const)
+    const htmlToMdService = new HtmlToMdService({
+        defaultReplacement(content, node) {
+            const tagName = (node as HTMLElement).tagName
+            console.log('content', content, tagName)
+            if (["TABLE", "TBODY", "THEAD", "TR", "TD", "TH"].includes(tagName)) {
+                return `<${tagName.toLocaleLowerCase()}>${content}</${tagName.toLocaleLowerCase()}>`
+            }
+            return content
+        }
+    })
     html = html.replaceAll("var(--color-icon-background)", "#f2f4f8")
         .replaceAll("var(--color-text)", "#222")
-        .replaceAll(/data-source-[^\s]+=""/g, '');
+        .replaceAll(/data-source-[^\s]+=""/g, '')
+        .replaceAll(/class--[^\s]+=""/g, '')
+        .replaceAll(/\s+class="[^"]*"\s+/g, ' ');
     const markdown = htmlToMdService.turndown(html)
     fs.writeFileSync(path.join(cwd, './components/index.md'), markdown)
 }
