@@ -3,20 +3,20 @@ import { SignatureReflection } from "typedoc";
 import { hasTypeParameters } from "../utils/lib";
 
 export function memberSignatureBody(
-    context: DefaultThemeRenderContext,
-    props: SignatureReflection,
-    { hideSources = false }: { hideSources?: boolean } = {},
+  context: DefaultThemeRenderContext,
+  props: SignatureReflection,
+  { hideSources = false }: { hideSources?: boolean } = {}
 ) {
-    //const returnsTag = props.comment?.getTag("@returns");
+  //const returnsTag = props.comment?.getTag("@returns");
 
-    return (
-        <>
-            {context.reflectionFlags(props)}
-            {context.commentSummary(props)}
+  return (
+    <>
+      {context.reflectionFlags(props)}
+      {context.commentSummary(props)}
 
-            {hasTypeParameters(props) && context.typeParameters(props.typeParameters)}
+      {hasTypeParameters(props) && context.typeParameters(props.typeParameters)}
 
-            {/*{props.parameters && props.parameters.length > 0 && (
+      {/*{props.parameters && props.parameters.length > 0 && (
                 <div class="tsd-parameters">
                     <h4 class="tsd-parameters-title">Parameters</h4>
                     <ul class="tsd-parameter-list">
@@ -43,7 +43,7 @@ export function memberSignatureBody(
                     </ul>
                 </div>
             )}*/}
-            {/*{props.type && (
+      {/*{props.type && (
                 <>
                     <h4 class="tsd-returns-title">
                         {"Returns "}
@@ -54,9 +54,9 @@ export function memberSignatureBody(
                 </>
             )}*/}
 
-            {context.commentTags(props)}
+      {context.commentTags(props)}
 
-            {!hideSources && context.memberSources(props)}
-        </>
-    );
+      {!hideSources && context.memberSources(props)}
+    </>
+  );
 }
