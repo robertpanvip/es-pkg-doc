@@ -4,6 +4,11 @@
 declare const global: {
     JSX: any
     Auth: number;
+    doc: {
+        name: string;
+        desc?:string;
+        icon?:string
+    }
 };
 declare module 'global' {
     import type {DebugInfo} from "@jsx/jsx-runtime.ts";
@@ -22,7 +27,7 @@ declare module 'global' {
              * @deprecated only for debug, will remove in next version
              */
             __REACT_DEV_INSPECTOR_TOGGLE__?: () => void,
-            debug:{[key:string]:DebugInfo};
+            debug: { [key: string]: DebugInfo };
         }
     }
 }

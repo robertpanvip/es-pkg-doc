@@ -24,13 +24,13 @@ export interface ResizeProps {
 
 export enum TestEnum {
   枚举1,
-  枚举2 = "testr",
+  枚举2 = "test",
 }
 export interface ResizeProps1 {
   readonly children?: React.ReactNode;
   /**
    * 类名称
-   * @default "123456"
+   * @default  "123456"
    */
   className?: string;
   /**

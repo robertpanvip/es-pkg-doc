@@ -7,7 +7,9 @@ import {Application, TSConfigReader} from "typedoc";
 import {sm} from "@jsx/jsx-runtime.ts";
 
 const cwd = process.cwd();
-
+global.doc = {
+    name: 'xxx'
+}
 
 async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandler> {
 

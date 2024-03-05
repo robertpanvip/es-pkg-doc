@@ -125,7 +125,7 @@ export function index(
                 id="user-content-es-pkg"
                 class="anchor"
                 aria-hidden="true"
-                href="#es-pkg"
+                href={`#${global.doc.name}`}
               >
                 <svg
                   aria-hidden="true"
@@ -142,15 +142,15 @@ export function index(
                   ></path>
                 </svg>
               </a>
-              xxxx
+              {global.doc.name}
             </h1>
-            <p>组件打包工具.</p>
+            <p>{global.doc.desc}</p>
             <p>
-              <a href="https://www.npmjs.com/package/es-pkg" rel="nofollow">
+              <a href={`https://www.npmjs.com/package/${global.doc.name}`} rel="nofollow">
                 <img
-                  src="https://camo.githubusercontent.com/87e231f6c9c425b8388e50d5b37d2712ca941d75263a1f2cc0c4f3e277a5fe4f/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f65732d706b673f636f6c6f723d333363643536266c6f676f3d6e706d"
+                  src={global.doc.icon?global.doc.icon:`https://camo.githubusercontent.com/87e231f6c9c425b8388e50d5b37d2712ca941d75263a1f2cc0c4f3e277a5fe4f/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f65732d706b673f636f6c6f723d333363643536266c6f676f3d6e706d`}
                   alt="NPM Version"
-                  data-canonical-src="https://img.shields.io/npm/v/es-pkg?color=33cd56&amp;logo=npm"
+                  data-canonical-src={`https://img.shields.io/npm/v/${global.doc.name}?color=33cd56&amp;logo=npm`}
                   style="max-width: 100%;"
                 />
               </a>
@@ -161,9 +161,8 @@ export function index(
             <div class="highlight highlight-source-js">
               <pre>
                 <span class="pl-s1">npm</span>{" "}
-                <span class="pl-s1">install</span> <span class="pl-s1">es</span>
-                <span class="pl-c1">-</span>
-                <span class="pl-s1">pkg</span>
+                <span class="pl-s1">install</span>{" "}
+                <span class="pl-s1">{global.doc.name}</span>
               </pre>
             </div>
             <p>

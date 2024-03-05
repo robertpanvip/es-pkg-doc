@@ -158,19 +158,22 @@ export function createElement(
         __source = {},
         ...rest
     } = props as DebugInfo || {}
+    const _props: Record<string, unknown> = {
+        ...rest,
+    }
     const uid = `${__source.fileName || ""}${__source.lineNumber || 0}${__source.columnNumber || 0}`
     const id = __source ? `data-source-${guid(uid)}` : ""
     sm.set(id, {
         __self,
         __source
     })
+    if (process.env["NODE_ENV"] !== "production") {
+        _props[id] = "";
+    }
     // 获取当前语法树的源文件
     return {
         tag,
-        props: {
-            ...rest,
-            [id]: ""
-        },
+        props: _props,
         children
     };
 }
@@ -185,9 +188,9 @@ export function setRenderSettings(options: { pretty: boolean, escaped: boolean }
 
 export const effectCache = new Map<number, (() => void)[]>();
 
-export const render = function render(node: JsxNode,container:Element):void {
+export const render = function render(node: JsxNode, container: Element): void {
     if (Array.isArray(node)) {
-        node.forEach((item)=>render(item,container))
+        node.forEach((item) => render(item, container))
         return
     }
     renderElement(node)
