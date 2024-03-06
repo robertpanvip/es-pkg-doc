@@ -94,14 +94,14 @@ export function index(
     content = (
       <details class="tsd-index-content tsd-index-accordion" open={true}>
         <summary class="tsd-accordion-summary tsd-index-summary">
-          <h5
+          <h2
             class="tsd-index-heading uppercase"
             role="button"
             aria-expanded="false"
             tabIndex={0}
           >
-            {context.icons.chevronSmall()} 导出的内容
-          </h5>
+            {context.icons.chevronSmall()} Exports
+          </h2>
         </summary>
         <div class="tsd-accordion-details">{content}</div>
       </details>
@@ -120,54 +120,40 @@ export function index(
       <section class="tsd-panel-group tsd-index-group">
         <article>
           <div id="readme">
-            <h1>
-              <a
-                id="user-content-es-pkg"
-                class="anchor"
-                aria-hidden="true"
-                href={`#${global.doc.name}`}
-              >
-                <svg
-                  aria-hidden="true"
-                  class="octicon octicon-link"
-                  viewBox="0 0 16 16"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  style="display:inline-block;user-select:none;vertical-align:middle"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
-                  ></path>
-                </svg>
-              </a>
-              {global.doc.name}
-            </h1>
+            <h1>{global.doc.name}</h1>
             <p>{global.doc.desc}</p>
             <p>
-              <a href={`https://www.npmjs.com/package/${global.doc.name}`} rel="nofollow">
+              <a
+                href={`https://www.npmjs.com/package/${global.doc.name}`}
+                rel="nofollow"
+              >
                 <img
-                  src={global.doc.icon?global.doc.icon:`https://camo.githubusercontent.com/87e231f6c9c425b8388e50d5b37d2712ca941d75263a1f2cc0c4f3e277a5fe4f/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f65732d706b673f636f6c6f723d333363643536266c6f676f3d6e706d`}
+                  src={
+                    global.doc.icon
+                      ? global.doc.icon
+                      : `https://camo.githubusercontent.com/87e231f6c9c425b8388e50d5b37d2712ca941d75263a1f2cc0c4f3e277a5fe4f/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f65732d706b673f636f6c6f723d333363643536266c6f676f3d6e706d`
+                  }
                   alt="NPM Version"
                   data-canonical-src={`https://img.shields.io/npm/v/${global.doc.name}?color=33cd56&amp;logo=npm`}
                   style="max-width: 100%;"
                 />
               </a>
             </p>
-            <p>
+            <h2>
               📦 <strong>Installation</strong>
-            </p>
+            </h2>
             <div class="highlight highlight-source-js">
               <pre>
-                <span class="pl-s1">npm</span>{" "}
-                <span class="pl-s1">install</span>{" "}
-                <span class="pl-s1">{global.doc.name}</span>
+                <code>
+                  <span class="pl-s1">npm</span>{" "}
+                  <span class="pl-s1">install</span>{" "}
+                  <span class="pl-s1">{global.doc.name}</span>
+                </code>
               </pre>
             </div>
-            <p>
+            <h2>
               🔨 <strong>Usage</strong>
-            </p>
+            </h2>
             <p>see demo</p>
           </div>
         </article>
