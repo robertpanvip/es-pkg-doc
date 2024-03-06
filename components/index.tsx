@@ -30,7 +30,7 @@ export interface ResizeProps1 {
   readonly children?: React.ReactNode;
   /**
    * 类名称
-   * @default  "123456"
+   * @default  fff
    */
   className?: string;
   /**
