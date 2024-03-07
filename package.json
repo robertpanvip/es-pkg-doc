@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "doc": "esno src/build.ts",
-    "server": "esno src/server/index.ts",
     "dev": "esno src/ssr.ts"
   },
   "dependencies": {

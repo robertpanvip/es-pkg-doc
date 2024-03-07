@@ -126,7 +126,7 @@ td .tsd-signature{
         --color-ts-call-signature: var(--light-color-ts-call-signature);
         --color-ts-index-signature: var(--light-color-ts-index-signature);
         --color-ts-constructor-signature: var(
-                --light-color-ts-constructor-signature
+            --light-color-ts-constructor-signature
         );
         --color-ts-parameter: var(--light-color-ts-parameter);
         --color-ts-type-parameter: var(--light-color-ts-type-parameter);
@@ -167,7 +167,7 @@ td .tsd-signature{
         --color-ts-call-signature: var(--dark-color-ts-call-signature);
         --color-ts-index-signature: var(--dark-color-ts-index-signature);
         --color-ts-constructor-signature: var(
-                --dark-color-ts-constructor-signature
+            --dark-color-ts-constructor-signature
         );
         --color-ts-parameter: var(--dark-color-ts-parameter);
         --color-ts-type-parameter: var(--dark-color-ts-type-parameter);
@@ -215,7 +215,7 @@ body {
     --color-ts-call-signature: var(--light-color-ts-call-signature);
     --color-ts-index-signature: var(--light-color-ts-index-signature);
     --color-ts-constructor-signature: var(
-            --light-color-ts-constructor-signature
+        --light-color-ts-constructor-signature
     );
     --color-ts-parameter: var(--light-color-ts-parameter);
     --color-ts-type-parameter: var(--light-color-ts-type-parameter);
@@ -254,7 +254,7 @@ body {
     --color-ts-call-signature: var(--dark-color-ts-call-signature);
     --color-ts-index-signature: var(--dark-color-ts-index-signature);
     --color-ts-constructor-signature: var(
-            --dark-color-ts-constructor-signature
+        --dark-color-ts-constructor-signature
     );
     --color-ts-parameter: var(--dark-color-ts-parameter);
     --color-ts-type-parameter: var(--dark-color-ts-type-parameter);
@@ -818,7 +818,7 @@ a.tsd-index-link {
     margin-left: 0.25rem;
 }
 .tsd-index-content > :not(:first-child) {
-    margin-top: 0.75rem;
+    margin-top: 1.5rem;
 }
 .tsd-index-heading {
     margin-top: 1.5rem;
@@ -842,6 +842,12 @@ a.tsd-index-link {
 
 .tsd-panel {
     margin-bottom: 2.5rem;
+}
+.tsd-panel-content {
+    margin-left: 2rem;
+}
+.tsd-index-section{
+    margin-left: 2rem;
 }
 /*.tsd-panel.tsd-member {
     margin-bottom: 4rem;

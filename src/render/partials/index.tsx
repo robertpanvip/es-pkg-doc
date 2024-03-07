@@ -41,7 +41,9 @@ function renderCategory(
               </a>
             </td>
             <td>
-              {prependName ? `${prependName} - ${item.title}` : item.title}
+              <code>
+                {prependName ? `${prependName} - ${item.title}` : item.title}
+              </code>
             </td>
           </tr>
         );
@@ -93,23 +95,31 @@ export function index(
   ) {
     content = (
       <details class="tsd-index-content tsd-index-accordion" open={true}>
-        <summary class="tsd-accordion-summary tsd-index-summary">
+        <summary>
           <h2
-            class="tsd-index-heading uppercase"
+            style="display:inline"
             role="button"
             aria-expanded="false"
             tabIndex={0}
           >
-            {context.icons.chevronSmall()} Exports
+            👊 Exports
           </h2>
         </summary>
-        <div class="tsd-accordion-details">{content}</div>
+        <h3 class="tsd-panel-content">
+          <table>
+            <thead>
+              <th>参数</th>
+              <th>类型</th>
+            </thead>
+            <tbody>{content}</tbody>
+          </table>
+        </h3>
       </details>
     );
   } else {
     content = (
       <>
-        <h3 class="tsd-index-heading uppercase">Index</h3>
+        <h2 class="tsd-index-heading uppercase">Index</h2>
         {content}
       </>
     );
@@ -139,33 +149,31 @@ export function index(
                 />
               </a>
             </p>
-            <h2>
-              📦 <strong>Installation</strong>
-            </h2>
-            <div class="highlight highlight-source-js">
-              <pre>
+            <details class="tsd-index-content" open={true}>
+              <summary>
+                <h2 style="display:inline">
+                  📦 <strong>Installation</strong>
+                </h2>
+              </summary>
+              <pre class="tsd-panel-content">
                 <code>
                   <span class="pl-s1">npm</span>{" "}
                   <span class="pl-s1">install</span>{" "}
                   <span class="pl-s1">{global.doc.name}</span>
                 </code>
               </pre>
-            </div>
-            <h2>
-              🔨 <strong>Usage</strong>
-            </h2>
-            <p>see demo</p>
+            </details>
+            <details class="tsd-index-content" open={true}>
+              <summary>
+                <h2 style="display:inline">
+                  🔨 <strong>Usage</strong>
+                </h2>
+              </summary>
+              <p class="tsd-panel-content">see demo</p>
+            </details>
+            {content}
           </div>
         </article>
-        <section class="tsd-panel tsd-index-panel">
-          <table>
-            <thead>
-              <th>参数</th>
-              <th>类型</th>
-            </thead>
-            <tbody>{content}</tbody>
-          </table>
-        </section>
       </section>
     </>
   );

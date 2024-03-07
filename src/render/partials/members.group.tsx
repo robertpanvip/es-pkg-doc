@@ -1,5 +1,6 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { ReflectionGroup } from "typedoc";
+import { icons } from "./icon";
 
 export function membersGroup(
   context: DefaultThemeRenderContext,
@@ -26,9 +27,10 @@ export function membersGroup(
   return (
     <details class="tsd-panel-group tsd-member-group" open={true}>
       <summary>
-        <h3 style="display:inline" role="button" aria-expanded="false">
-          {group.title}
-        </h3>
+        <h2 style="display:inline" role="button" aria-expanded="false">
+          {icons[group.owningReflection.kind]()}
+          <strong>{group.title}</strong>
+        </h2>
       </summary>
       {group.children.map(
         (item) => !item.hasOwnDocument && context.member(item)
