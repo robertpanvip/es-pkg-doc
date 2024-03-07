@@ -4,5 +4,6 @@ export default defineConfig({
     "es": "./es",
     "lib": "./lib",
     "typings": "./es",
-    "publishDir":"../es-pkg-doc-npm"
+    "publishDir":"../es-pkg-doc-npm",
+    "entry":"./src/doc.ts"
 })

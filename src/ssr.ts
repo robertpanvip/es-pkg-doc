@@ -16,17 +16,20 @@ global.doc = {
 }
 type Render = (p: ProjectReflection | null) => { html: string, effects: () => string }
 
-const transformIndexTask: {
-    task: Promise<string> | null,
-    url: string,
-    server?: ViteDevServer,
-    gen(server: ViteDevServer, url: string): Promise<string>
-} = {
+enum RenderType {
+    HTML,
+    RENDER,
+    TYPEDOC
+}
+
+type Task<T>={
+    task: Promise<T>|null,
+    gen(server?: ViteDevServer, url?: string): Promise<T>
+}
+
+const transformIndexTask: Task<string> = {
     task: null,
-    url: "",
     async gen(server, url) {
-        this.url = url;
-        this.server = server;
         // 1. 读取 index.html
         let template = fs.readFileSync(
             path.join(cwd, 'index.html'),
@@ -35,28 +38,22 @@ const transformIndexTask: {
         // 2. 应用 Vite HTML 转换。这将会注入 Vite HMR 客户端，
         //    同时也会从 Vite 插件应用 HTML 转换。
         //    例如：@vitejs/plugin-react-refresh 中的 global preambles
-        template = await server.transformIndexHtml(url, template)
+        template = await server!.transformIndexHtml(url!, template)
         return template;
     }
 }
-let changed=""
-const getRenderTask: {
-    task: Promise<Render> | null,
-    server?: ViteDevServer,
-    gen(server: ViteDevServer): Promise<Render>
-} = {
+let changed: RenderType | null = null
+
+const getRenderTask: Task<Render> = {
     task: null,
     async gen(server) {
-        this.server = server;
         const entry = path.join(cwd, '/src/render/index.ts');
-        const {default: render} = await server.ssrLoadModule(entry,{fixStacktrace:true})
+        const {default: render} = await server!.ssrLoadModule(entry, {fixStacktrace: true})
         return render
     }
 }
-const typedocTask: {
-    task: Promise<ProjectReflection> | null,
-    gen(): Promise<ProjectReflection>
-} = {
+
+const typedocTask: Task<ProjectReflection> = {
     task: null,
     async gen() {
         const file = path.join(cwd, './components/index.tsx');
@@ -89,17 +86,17 @@ async function createSsrMiddleware(server: ViteDevServer): Promise<RequestHandle
         }
         try {
 
-            if(["html"].includes(changed)){
+            if ([RenderType.HTML].includes(changed!)) {
                 transformIndexTask.task = transformIndexTask.gen(server, url)
             }
 
             const template = await transformIndexTask.task || '';
-            if(["render"].includes(changed)){
+            if ([RenderType.RENDER].includes(changed!)) {
                 getRenderTask.task = getRenderTask.gen(server)
             }
 
             const render = await getRenderTask.task
-            if(["typedoc"].includes(changed)){
+            if ([RenderType.TYPEDOC].includes(changed!)) {
                 typedocTask.task = typedocTask.gen()
             }
             const project = await typedocTask.task
@@ -129,14 +126,14 @@ async function createServer() {
         base: "./",
         mode: "server",
         appType: 'custom',
-        server: { middlewareMode: true },
+        server: {middlewareMode: true},
         logLevel: 'info', // 可以尝试设置为 'debug' 查看更详细的日志
     })
 
     const server = app.listen(port, () => {
         transformIndexTask.task = transformIndexTask.gen(vite, "/")
         getRenderTask.task = getRenderTask.gen(vite)
-        typedocTask.task = typedocTask.gen()
+        typedocTask.task = typedocTask.gen();
         const url = `http://localhost:${port}`;
         printServerUrls(
             {
@@ -146,20 +143,23 @@ async function createServer() {
             url,
             console.info,
         )
-        openBrowser(url, true, console)
+        openBrowser(url, true, console);
     });
 
     vite.watcher.on("all", (_, watchPath) => {
         const watches = {
             [path.join(cwd, '/index.html')]: () => {
-                changed="html";
+                changed = RenderType.HTML;
             },
             [path.join(cwd, '/src')]: () => {
-                console.log('render---',!!getRenderTask.server)
-                changed="render";
+                changed = RenderType.RENDER;
             },
             [path.join(cwd, '/components')]: () => {
-                changed="typedoc";
+                changed = RenderType.TYPEDOC;
+                vite.ws.send({
+                    type: 'full-reload',
+                    path: watchPath
+                })
             }
         };
         Object.entries(watches).forEach(([key, fn]) => {

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "doc": "esno src/build.ts",
-    "dev": "esno src/ssr.ts"
+    "dev": "esno src/ssr.ts",
+    "compile": "es-pkg compile"
   },
   "dependencies": {
     "@types/convert-source-map": "^2.0.3",
