@@ -20,7 +20,7 @@ export type DocOptions = {
     /** 包名称 */
     name: string,
     /** 描述 */
-    desc?:string
+    desc?: string
     /** 编译文件的入口 */
     entry: string,
     /** 编译文件的 ts配置路径 */
@@ -35,7 +35,6 @@ export type DocOptions = {
 
 /**
  * 默认 EsPkgDoc的主函数
- * @param config DocOptions
  */
 export async function doc(config: DocOptions) {
     global.doc = {
