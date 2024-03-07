@@ -1,5 +1,5 @@
 import path from 'node:path'
-import doc, {DocOptions} from "./doc.ts";
+import bootstrap, {DocOptions} from "./doc.ts";
 
 const cwd = process.cwd();
 const file = path.join(cwd, './src/doc.ts')
@@ -12,4 +12,4 @@ const config: DocOptions = {
     outDir: path.join(cwd, './'),
 }
 
-doc(config).catch(console.log)
+bootstrap(config).catch(console.log)

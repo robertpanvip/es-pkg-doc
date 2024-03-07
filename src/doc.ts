@@ -36,7 +36,7 @@ export type DocOptions = {
 /**
  * 默认 EsPkgDoc的主函数
  */
-export async function doc(config: DocOptions) {
+export async function bootstrap(config: DocOptions) {
     global.doc = {
         ...config,
     }
@@ -95,4 +95,4 @@ export async function doc(config: DocOptions) {
     }
 }
 
-export default doc
+export default bootstrap
