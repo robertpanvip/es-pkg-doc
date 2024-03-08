@@ -16,7 +16,7 @@ process.env["NODE_ENV"] = "production";
 /**
  * 生成doc文档的配置项
  */
-export type DocOptions = {
+export interface DocOptions  {
     /** 包名称 */
     name: string,
     /** 描述 */

@@ -1,5 +1,4 @@
 import {defineConfig, Plugin, createFilter} from 'vite'
-//import react from '@vitejs/plugin-react'
 import checker from 'vite-plugin-checker'
 
 let babel;

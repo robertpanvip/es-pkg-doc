@@ -5,5 +5,5 @@ export default defineConfig({
     "lib": "./lib",
     "typings": "./es",
     "publishDir":"../es-pkg-doc-npm",
-    "entry":"./src/doc.ts"
+    "entry":"./src/index.ts"
 })
