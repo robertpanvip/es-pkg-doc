@@ -2,7 +2,7 @@ import type {
     DeclarationReflection,
     //  ReflectionType
 } from "typedoc";
-// import { JSX } from "../jsx";
+import { JSX } from "../jsx";
 import {
     /* getKindClass, */
     //   hasTypeParameters,

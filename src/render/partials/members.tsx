@@ -1,7 +1,7 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import { ContainerReflection, DeclarationReflection } from "typedoc";
 import { classNames } from "../utils/lib";
-
+import { JSX } from "../jsx";
 export function members(context: DefaultThemeRenderContext, props: ContainerReflection) {
     if (props.categories && props.categories.length) {
         return (

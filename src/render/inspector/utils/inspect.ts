@@ -8,7 +8,7 @@ import {
     getFiberName,
     getElementFiberUpward,
 } from './fiber'
-import {DebugSource} from "@jsx/jsx-runtime.ts";
+import {DebugSource} from "../../jsx";
 import {Fiber} from "../infer.ts";
 
 type Source = DebugSource

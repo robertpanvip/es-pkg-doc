@@ -2,7 +2,7 @@ import { classNames, getDisplayName, wbr } from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import { DeclarationReflection, ReferenceReflection } from "typedoc";
 import { anchorIcon } from "./anchor-icon";
-
+import { JSX } from "../jsx";
 function defaultValue(props: DeclarationReflection) {
   const value = props.comment?.blockTags.filter(
     (tag) => tag.tag === "@default"

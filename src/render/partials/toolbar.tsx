@@ -2,7 +2,7 @@ import type { Reflection } from "typedoc";
 import type { PageEvent } from "typedoc";
 import { getDisplayName } from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-
+import { JSX } from "../jsx";
 export const toolbar = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => (
     <header class="tsd-page-toolbar">
         <div class="tsd-toolbar-contents container">

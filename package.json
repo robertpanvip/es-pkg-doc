@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "doc": "esno src/build.ts",
-    "md": "esno src/md.ts",
-    "dev": "esno src/ssr.ts",
+    "doc": "esno build.ts",
+    "md": "esno md.ts",
+    "dev": "esno server/ssr.ts",
     "compile": "es-pkg compile"
   },
   "dependencies": {

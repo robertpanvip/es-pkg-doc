@@ -2,7 +2,7 @@ import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { PageEvent } from "typedoc";
 import { getHierarchyRoots } from "../utils/lib";
 import type { DeclarationReflection, ProjectReflection } from "typedoc";
-
+import { JSX } from "../jsx";
 function fullHierarchy(
     context: DefaultThemeRenderContext,
     root: DeclarationReflection,

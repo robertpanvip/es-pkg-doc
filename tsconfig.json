@@ -21,10 +21,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "jsxFactory": "JSX.createElement",
     "jsxFragmentFactory": "JSX.Fragment",
-    "jsxImportSource": "@jsx",
+    //"jsxImportSource": "@jsx",
     // Linting
     "forceConsistentCasingInFileNames": true,
     // Library
@@ -35,6 +35,6 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true
   },
-  "include": ["src"],
+  "include": ["src","server","build.ts","md.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

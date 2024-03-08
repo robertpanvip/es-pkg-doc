@@ -2,7 +2,7 @@ import type {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
 import {Raw} from "../jsx";
 import {Reflection, ReflectionKind} from "typedoc";
 import {camelToTitleCase} from "../utils/lib";
-
+import { JSX } from "../jsx";
 // Note: Comment modifiers are handled in `renderFlags`
 
 export function commentSummary(

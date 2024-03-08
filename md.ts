@@ -1,5 +1,5 @@
 import path from 'node:path'
-import bootstrap, {DocOptions} from "./doc.ts";
+import bootstrap, {DocOptions} from "./src/doc.ts";
 
 const cwd = process.cwd();
 const file = path.join(cwd, './src/doc.ts')

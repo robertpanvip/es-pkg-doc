@@ -1,4 +1,4 @@
-import {DebugSource} from "@jsx/jsx-runtime.ts";
+import {DebugSource} from "../jsx";
 import {CodeDataAttribute} from "./utils/inspect.ts";
 
 export type Fiber = {

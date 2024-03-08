@@ -1,6 +1,6 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { ReferenceReflection } from "typedoc";
-
+import { JSX } from "../jsx";
 export const memberReference = ({ urlTo }: DefaultThemeRenderContext, props: ReferenceReflection) => {
     const referenced = props.tryGetTargetReflectionDeep();
 

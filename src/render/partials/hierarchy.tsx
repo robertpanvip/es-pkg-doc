@@ -1,6 +1,6 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { DeclarationHierarchy, Type } from "typedoc";
-
+import { JSX } from "../jsx";
 const isLinkedReferenceType = (type: Type) =>
     type.visit({
         reference: (ref) => ref.reflection !== undefined,

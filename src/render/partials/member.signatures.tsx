@@ -2,7 +2,7 @@ import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { DeclarationReflection } from "typedoc";
 import { anchorIcon } from "./anchor-icon";
 import { classNames } from "../utils/lib";
-
+import { JSX } from "../jsx";
 export const memberSignatures = (context: DefaultThemeRenderContext, props: DeclarationReflection) => (
     <>
         <ul class={classNames({ "tsd-signatures": true }, context.getReflectionClasses(props))}>

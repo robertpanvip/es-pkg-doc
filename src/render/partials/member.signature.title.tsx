@@ -1,7 +1,7 @@
 import {getKindClass, join, renderTypeParametersSignature, wbr} from "../utils/lib";
 import type {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
 import {ParameterReflection, ReflectionKind, SignatureReflection} from "typedoc";
-
+import { JSX } from "../jsx";
 function renderParameterWithType(context: DefaultThemeRenderContext, item: ParameterReflection) {
     return (
         <>

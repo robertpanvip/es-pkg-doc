@@ -1,7 +1,7 @@
 import { classNames, getKindClass, wbr } from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import { DeclarationReflection, ReflectionType } from "typedoc";
-
+import { JSX } from "../jsx";
 export const parameter = (context: DefaultThemeRenderContext, props: DeclarationReflection) => (
     <>
         <ul class="tsd-parameters">

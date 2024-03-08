@@ -1,7 +1,7 @@
 import { DeclarationReflection, ReflectionKind, type Reflection, ReflectionType } from "typedoc";
 import { getKindClass, renderTypeParametersSignature } from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-
+import { JSX } from "../jsx";
 export function reflectionPreview(context: DefaultThemeRenderContext, props: Reflection) {
     if (!(props instanceof DeclarationReflection)) return;
 

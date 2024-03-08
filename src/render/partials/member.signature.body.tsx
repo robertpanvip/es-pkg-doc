@@ -1,7 +1,7 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import { SignatureReflection } from "typedoc";
 import { hasTypeParameters } from "../utils/lib";
-
+import { JSX } from "../jsx";
 export function memberSignatureBody(
   context: DefaultThemeRenderContext,
   props: SignatureReflection,

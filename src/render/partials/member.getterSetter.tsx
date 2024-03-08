@@ -1,7 +1,7 @@
 import type { DeclarationReflection } from "typedoc";
 import { classNames } from "../utils/lib";
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-
+import { JSX } from "../jsx";
 export const memberGetterSetter = (context: DefaultThemeRenderContext, props: DeclarationReflection) => (
     <>
         <ul

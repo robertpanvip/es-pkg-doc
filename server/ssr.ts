@@ -4,9 +4,9 @@ import path from 'node:path';
 import {createServer as createViteServer, ViteDevServer} from 'vite';
 import {openBrowser, printServerUrls} from './utils/openBrowser.ts';
 import {Application, ProjectReflection, TSConfigReader} from "typedoc";
-import {sm} from "@jsx/jsx-runtime.ts";
+import {sm} from "../src/render/jsx";
 import {isPathInside} from './utils/path.ts';
-import * as JSX from "@jsx/jsx-runtime.ts";
+import * as JSX from "../src/render/jsx";
 
 const cwd = process.cwd();
 // 定义全局函数

@@ -2,7 +2,7 @@ import { classNames, getDisplayName, hasTypeParameters, join } from "../utils/li
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { PageEvent } from "typedoc";
 import { Reflection, ReflectionKind } from "typedoc";
-
+import { JSX } from "../jsx";
 export const header = (context: DefaultThemeRenderContext, props: PageEvent<Reflection>) => {
     const HeadingLevel = props.model.isProject() ? "h2" : "h1";
     return (

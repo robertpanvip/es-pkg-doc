@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import HtmlToMdService from 'turndown'
 import beautify from "js-beautify";
 import {renderServer} from "./render";
-import * as JSX from "@jsx/jsx-runtime.ts";
+import * as JSX from "./render/jsx";
 
 const cwd = process.cwd();
 

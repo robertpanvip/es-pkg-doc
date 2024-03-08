@@ -1,9 +1,8 @@
 import path from 'node:path'
-import doc, {DocOptions} from "./doc.ts";
+import doc, {DocOptions} from "./src/doc.ts";
 
 const cwd = process.cwd();
 const file = path.join(cwd, './components/index.tsx')
-
 const config: DocOptions = {
     name: 'my-test',
     desc:'这是测试',

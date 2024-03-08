@@ -1,5 +1,6 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { TypeParameterReflection } from "typedoc";
+import { JSX } from "../jsx";
 export function typeParameters(context: DefaultThemeRenderContext, typeParameters: TypeParameterReflection[]) {
     return (
         <>

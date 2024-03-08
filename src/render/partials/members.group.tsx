@@ -1,7 +1,7 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import type { ReflectionGroup } from "typedoc";
 import { icons } from "./icon";
-
+import { JSX } from "../jsx";
 export function membersGroup(
   context: DefaultThemeRenderContext,
   group: ReflectionGroup

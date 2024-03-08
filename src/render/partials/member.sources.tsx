@@ -1,5 +1,5 @@
 import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
-//import { JSX } from "../jsx";
+import { JSX } from "../jsx";
 import type { DeclarationReflection, SignatureReflection, SourceReference } from "typedoc";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
