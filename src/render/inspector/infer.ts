@@ -1,5 +1,5 @@
 import {DebugSource} from "../jsx";
-import {CodeDataAttribute} from "./utils/inspect.ts";
+import {CodeDataAttribute} from "./utils/inspect";
 
 export type Fiber = {
     _debugSource: DebugSource;

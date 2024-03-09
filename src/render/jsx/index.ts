@@ -1,6 +1,6 @@
-import * as JSX from "./jsx-runtime.ts";
+import * as JSX from "./jsx-runtime";
 export {
     JSX,
 };
-export { Fragment, Raw, renderElement } from "./jsx-runtime.ts";
-export * from "./jsx-runtime.ts";
+export { Fragment, Raw, renderElement } from "./jsx-runtime";
+export * from "./jsx-runtime";

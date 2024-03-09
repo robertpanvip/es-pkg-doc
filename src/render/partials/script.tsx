@@ -1,4 +1,4 @@
-import {DefaultThemeRenderContext} from "../DefaultThemeRenderContext.ts";
+import {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
 import { JSX } from "../jsx";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error

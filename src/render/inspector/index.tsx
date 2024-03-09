@@ -1,4 +1,4 @@
-import {JsxNode} from "../jsx/jsx-runtime.ts";
+import {JsxNode} from "../jsx/jsx-runtime";
 import { JSX } from "../jsx";
 export interface InspectorProps {
     children?: JsxNode

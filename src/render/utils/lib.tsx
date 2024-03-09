@@ -1,4 +1,4 @@
-import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext.ts";
+import type { DefaultThemeRenderContext } from "../DefaultThemeRenderContext";
 import {
     DeclarationReflection,
     ProjectReflection,

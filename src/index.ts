@@ -6,8 +6,6 @@ import beautify from "js-beautify";
 import {renderServer} from "./render";
 import * as JSX from "./render/jsx";
 
-const cwd = process.cwd();
-
 // 定义全局函数
 global.JSX = JSX;
 
@@ -16,7 +14,7 @@ process.env["NODE_ENV"] = "production";
 /**
  * 生成doc文档的配置项
  */
-export interface DocOptions  {
+export interface DocOptions {
     /** 包名称 */
     name: string,
     /** 描述 */
@@ -45,6 +43,12 @@ export async function bootstrap(config: DocOptions) {
     if (!Array.isArray(outType)) {
         outType = [outType]
     }
+    try {
+        fs.statSync(config.entry)
+    } catch (e) {
+        console.error(`${config.entry} not found`)
+        return
+    }
     const app = await Application.bootstrap({
         entryPoints: [config.entry],
         tsconfig: config.tsconfig,
@@ -53,17 +57,25 @@ export async function bootstrap(config: DocOptions) {
     app.options.addReader(new TSConfigReader());
     const project = await app.convert();
     const result = renderServer(project!)
-    const template = fs.readFileSync(
-        path.join(cwd, 'index.html'),
-        'utf-8'
-    )
+    const template = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+  <!--ssr-outlet-->
+  </body>
+  <!--ssr-script-->
+</html>`
     let html = template
         .replace(`<!--ssr-outlet-->`, beautify.html(result.html, {indent_size: 2}))
 
     if (outType.includes('html')) {
         fs.writeFileSync(path.join(config.outDir, `${outName}.html`), html)
     }
-
 
     if (outType.includes('md')) {
         const htmlToMdService = new HtmlToMdService({

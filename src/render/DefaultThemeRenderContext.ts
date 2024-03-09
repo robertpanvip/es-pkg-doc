@@ -28,7 +28,7 @@ import {navigation, pageNavigation, pageSidebar, settings, sidebar, sidebarLinks
 import {toolbar} from "./partials/toolbar";
 import {indexTemplate} from "./templates";
 import {hierarchyTemplate} from "./templates/hierarchy";
-import {tableTemplate} from "./templates/table.tsx";
+import {tableTemplate} from "./templates/table";
 
 import type {
     Options,
@@ -46,9 +46,9 @@ import {
     ReflectionKind
 } from "typedoc";
 import * as Path from "path";
-import {ConsoleLogger} from "./utils/loggers.ts";
-import {classNames, getDisplayName, toStyleClass} from "./utils/lib.tsx";
-import {NeverIfInternal} from "./utils/general.ts";
+import {ConsoleLogger} from "./utils/loggers";
+import {classNames, getDisplayName, toStyleClass} from "./utils/lib";
+import {NeverIfInternal} from "./utils/general";
 
 function bind<F, L extends any[], R>(fn: (f: F, ...a: L) => R, first: F) {
     return (...r: L) => fn(first, ...r);

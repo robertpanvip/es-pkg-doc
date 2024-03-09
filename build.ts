@@ -1,5 +1,5 @@
 import path from 'node:path'
-import doc, {DocOptions} from "./src/index.ts";
+import doc, {DocOptions} from "./src";
 
 const cwd = process.cwd();
 const file = path.join(cwd, './components/index.tsx')

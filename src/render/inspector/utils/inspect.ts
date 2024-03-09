@@ -9,7 +9,7 @@ import {
     getElementFiberUpward,
 } from './fiber'
 import {DebugSource} from "../../jsx";
-import {Fiber} from "../infer.ts";
+import {Fiber} from "../infer";
 
 type Source = DebugSource
 export interface CodeInfo {
