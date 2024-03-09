@@ -6,7 +6,7 @@ import beautify from "js-beautify";
 import {renderServer} from "./render";
 import * as JSX from "./render/jsx";
 import {packageJson} from "./render/utils/json";
-import {genCases} from "./utils/case.ts";
+import {genCases} from "./utils/case";
 
 // 定义全局函数
 global.JSX = JSX;
