@@ -7,7 +7,10 @@ declare const global: {
     doc: {
         name: string;
         desc?:string;
-        icon?:string
+        icon?:string;
+        author?:string;
+        repository?:string
+        cases?:string[]
     }
 };
 declare module 'global' {

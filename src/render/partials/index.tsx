@@ -102,7 +102,7 @@ export function index(
             aria-expanded="false"
             tabIndex={0}
           >
-            👊 Exports
+            🏠 Exports
           </h2>
         </summary>
         <h3 class="tsd-panel-content">
@@ -141,11 +141,50 @@ export function index(
                   src={
                     global.doc.icon
                       ? global.doc.icon
-                      : `https://camo.githubusercontent.com/87e231f6c9c425b8388e50d5b37d2712ca941d75263a1f2cc0c4f3e277a5fe4f/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f65732d706b673f636f6c6f723d333363643536266c6f676f3d6e706d`
+                      : `https://img.shields.io/npm/v/${global.doc.name}?color=33cd56&logo=npm`
                   }
                   alt="NPM Version"
                   data-canonical-src={`https://img.shields.io/npm/v/${global.doc.name}?color=33cd56&amp;logo=npm`}
                   style="max-width: 100%;"
+                />
+              </a>
+              <a
+                  href={`https://www.npmjs.com/package/${global.doc.name}`}
+                  rel="nofollow"
+              >
+                <img
+                    src={
+                      global.doc.icon
+                          ? global.doc.icon
+                          : `https://img.shields.io/npm/dm/${global.doc.name}.svg?style=flat-square`
+                    }
+                    alt="NPM Version"
+                    data-canonical-src={`https://img.shields.io/npm/dm/${global.doc.name}.svg?style=flat-square`}
+                    style="max-width: 100%;"
+                />
+              </a>
+              <a
+                  href={`https://www.npmjs.com/package/${global.doc.name}`}
+                  rel="nofollow"
+              >
+                <img
+                    src={`https://img.shields.io/npm/unpacked-size/${global.doc.name}?color=green`}
+                    alt="unpacked size"
+                    data-canonical-src={`https://img.shields.io/npm/unpacked-size/${global.doc.name}?color=green`}
+                    style="max-width: 100%;"
+                />
+              </a>
+              <a
+                  href={global.doc.repository??`https://www.npmjs.com/package/${global.doc.name}`}
+                  rel="nofollow"
+              >
+                <img
+                    src={
+                      `https://img.shields.io/badge/docs_by-${global.doc.author}-blue`
+                    }
+                    alt="Author"
+                    data-canonical-src={`https://img.shields.io/badge/docs_by-${global.doc.author}-blue`}
+                    style="max-width: 100%;"
                 />
               </a>
             </p>
@@ -169,7 +208,33 @@ export function index(
                   🔨 <strong>Usage</strong>
                 </h2>
               </summary>
-              <p class="tsd-panel-content">see demo</p>
+              <p>
+                {
+                    Array.isArray(global.doc.cases)&&global.doc.cases.map((item,index,array)=>{
+                      if(!item){
+                        return <></>
+                      }
+                      return(
+                          <>
+                              <p class="tsd-panel-content">
+                                  <pre>
+                                     <code>
+                                          {item}
+                                     </code>
+                                  </pre>
+                              </p>
+                            {
+                              index!==(array.length-1)&&(
+                                   <h2 style="height:0px"> <br/></h2>
+                                )
+                            }
+
+                          </>
+
+                      )
+                    })
+                }
+              </p>
             </details>
             {content}
           </div>

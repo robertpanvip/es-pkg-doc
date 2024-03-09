@@ -9,6 +9,7 @@ const config: DocOptions = {
     tsconfig: path.join(cwd, './components/tsconfig.json'),
     entry: file,
     outDir: path.join(cwd, './components'),
+    caseDir:path.join(cwd, './components/case'),
     outType:["html","md"]
 }
 

@@ -178,6 +178,17 @@ export function createElement(
     };
 }
 
+export function cloneElement<P>(element: JsxElement, props?: P, ...children: JsxNode[]): JsxElement {
+    return {
+        ...element,
+        props: {
+            ...element.props,
+            ...props,
+        },
+        children: element.children || children
+    }
+}
+
 let renderPretty = true;
 let renderEscaped = true;
 

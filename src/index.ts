@@ -5,6 +5,8 @@ import HtmlToMdService from 'turndown'
 import beautify from "js-beautify";
 import {renderServer} from "./render";
 import * as JSX from "./render/jsx";
+import {packageJson} from "./render/utils/json";
+import {genCases} from "./utils/case.ts";
 
 // 定义全局函数
 global.JSX = JSX;
@@ -16,7 +18,11 @@ process.env["NODE_ENV"] = "production";
  */
 export interface DocOptions {
     /** 包名称 */
-    name: string,
+    name?: string,
+    /** 作者 */
+    author?: string,
+    /** 仓库地址 */
+    repository?: string,
     /** 描述 */
     desc?: string
     /** 编译文件的入口 */
@@ -28,14 +34,26 @@ export interface DocOptions {
     /** 编译后输出的类型 @default md*/
     outType?: "html" | "md" | ["html", "md"],
     /** 编译后输出的文件名称 @default README*/
-    outName?: string
+    outName?: string,
+    /** 生成用法 例子的目录 @default case */
+    caseDir?: string
 }
 
 /**
  * 默认 EsPkgDoc的主函数
  */
 export async function bootstrap(config: DocOptions) {
+    const name = config.name || packageJson.name;
+    if (!config.caseDir) {
+        config.caseDir = path.join(config.entry, 'case')
+    }
+    console.log('caseDir', config.caseDir)
     global.doc = {
+        name,
+        desc: config.desc || packageJson.description,
+        author: config.author || packageJson.author,
+        repository: config.repository || packageJson.repository?.url,
+        cases: genCases(config.caseDir, name || "", config.entry),
         ...config,
     }
     const outName = config.outName || 'README';

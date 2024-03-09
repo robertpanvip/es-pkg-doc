@@ -2,18 +2,32 @@ import express, {RequestHandler} from 'express';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createServer as createViteServer, ViteDevServer} from 'vite';
-import {openBrowser, printServerUrls} from './utils/openBrowser.ts';
+import {openBrowser, printServerUrls} from './utils/openBrowser';
 import {Application, ProjectReflection, TSConfigReader} from "typedoc";
 import {sm} from "../src/render/jsx";
-import {isPathInside} from './utils/path.ts';
+import {isPathInside} from './utils/path';
 import * as JSX from "../src/render/jsx";
+import {packageJson} from "../src/render/utils/json";
+import {genCases} from "../src/utils/case.ts";
 
 const cwd = process.cwd();
+
+
+
 // 定义全局函数
 global.JSX = JSX;
 global.doc = {
-    name: 'xxx'
+    name: packageJson.name,
+    desc: packageJson.description,
+    author: packageJson.author,
+    repository: packageJson.repository?.url,
+    cases: genCases(
+        path.join(cwd,'./components/case'),
+        packageJson.name,
+        path.join(cwd,'./components/index.tsx'),
+    ),
 }
+
 type Render = (p: ProjectReflection | null) => { html: string, effects: () => string }
 
 enum RenderType {
@@ -22,8 +36,8 @@ enum RenderType {
     TYPEDOC
 }
 
-type Task<T>={
-    task: Promise<T>|null,
+type Task<T> = {
+    task: Promise<T> | null,
     gen(server?: ViteDevServer, url?: string): Promise<T>
 }
 

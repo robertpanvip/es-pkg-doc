@@ -12,7 +12,7 @@ export interface ResizeProps {
   className?: string;
   /** 内联样式*/
   style?: React.CSSProperties;
-  /** 最外面包裹的元素默认是div*/
+  /** 最外面包裹的元素 @default "div"*/
   is?: string;
   /** 宽度和高度的最小值*/
   minSize?: Partial<MinSize> | number;
@@ -30,7 +30,7 @@ export interface ResizeProps1 {
   readonly children?: React.ReactNode;
   /**
    * 类名称
-   * @default  fff
+   * @default  "fff"
    */
   className?: string;
   /**

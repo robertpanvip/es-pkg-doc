@@ -1,5 +1,6 @@
 export interface IntrinsicElements {
     // HTML Elements
+    center: JsxHtmlGlobalProps;
     a: JsxAElementProps;
     abbr: JsxHtmlGlobalProps;
     address: JsxHtmlGlobalProps;
@@ -157,7 +158,9 @@ export interface JsxHtmlGlobalProps {
     children?: JsxChildren;
     class?: string;
     contentEditable?: string;
+
     [data: `data-${string}`]: string;
+
     dir?: string;
     draggable?: boolean;
     enterKeyHint?: string;
@@ -1044,7 +1047,8 @@ export interface JsxGElementProps
     extends JsxSvgCoreProps,
         JsxSvgStyleProps,
         JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {}
+        JsxSvgPresentationProps {
+}
 
 /**
  * Properties permitted on the `<path>` element.
