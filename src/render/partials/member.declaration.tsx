@@ -2,7 +2,7 @@ import type {
     DeclarationReflection,
     //  ReflectionType
 } from "typedoc";
-import { JSX } from "../jsx";
+import {JSX} from "../jsx";
 import {
     /* getKindClass, */
     //   hasTypeParameters,
@@ -33,21 +33,21 @@ export function memberDeclaration(
                 {renderTypeParametersSignature(context, props.typeParameters)}
                 {props.type && (
                     <>
-            <span class="tsd-signature-symbol">
-              {!!props.flags.isOptional && "?"}:
-            </span>{" "}
+                        <span class="tsd-signature-symbol">
+                          {!!props.flags.isOptional && "?"}:
+                        </span>{" "}
                         {context.type(props.type)}
                     </>
                 )}
                 {!!props.defaultValue && (
                     <>
-            <span class="tsd-signature-symbol">
-              {" = "}
-                {props.defaultValue}
-            </span>
+                        <span class="tsd-signature-symbol">
+                          {" = "}
+                            {props.defaultValue}
+                        </span>
                     </>
                 )}
-               {/* {context.commentTags(props)}*/}
+                {/* {context.commentTags(props)}*/}
             </div>
 
             {/* {context.commentSummary(props)}*/}
@@ -62,7 +62,7 @@ export function memberDeclaration(
         reference: (ref) => ref.typeArguments?.map((t) => t.visit(visitor)),
         tuple: (ref) => ref.elements.map((t) => t.visit(visitor)),
       })} */}
-           {/* {context.memberSources(props)}*/}
+            {/* {context.memberSources(props)}*/}
         </>
     );
 }

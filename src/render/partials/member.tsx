@@ -1,8 +1,9 @@
 import {classNames, getDisplayName, wbr} from "../utils/lib";
 import type {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
-import {DeclarationReflection, ReferenceReflection} from "typedoc";
+import {DeclarationReflection, ReferenceReflection, ReflectionType} from "typedoc";
 import {anchorIcon} from "./anchor-icon";
 import {JSX} from "../jsx";
+import {commentSummary} from "./comment.tsx";
 
 function defaultValue(props: DeclarationReflection) {
     const value = props.comment?.blockTags.filter(
@@ -20,6 +21,29 @@ function defaultValue(props: DeclarationReflection) {
         .join("");
 }
 
+function renderTable(
+    context: DefaultThemeRenderContext,
+    props: DeclarationReflection,
+) {
+    return <table>
+        <thead>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>说明</th>
+            <th>默认值</th>
+        </tr>
+        </thead>
+        <tbody>
+        {props.groups?.map((item) =>
+            item.children.map(
+                (item) => !item.hasOwnDocument && context.member(item, true)
+            )
+        )}
+        </tbody>
+    </table>
+}
+
 export function member(
     context: DefaultThemeRenderContext,
     props: DeclarationReflection,
@@ -31,6 +55,7 @@ export function member(
         kind: props.kind,
         classes: context.getReflectionClasses(props),
     });
+
     let result;
     if (props.signatures) {
         result = context.memberSignatures(props);
@@ -39,7 +64,15 @@ export function member(
     } else if (props instanceof ReferenceReflection) {
         result = context.memberReference(props);
     } else {
-        result = context.memberDeclaration(props);
+        if (props.type?.type !== 'union' && props.type instanceof ReflectionType) {
+            if (props.type.declaration.children?.length) {
+                result = renderTable(context, props.type.declaration)
+            }else{
+                result = context.memberDeclaration(props);
+            }
+        } else {
+            result = context.memberDeclaration(props);
+        }
     }
     if (inTable) {
         return (
@@ -78,36 +111,21 @@ export function member(
             )}
         >
             <div class="tsd-panel-content">
-                <a id={props.anchor} class="tsd-anchor"></a>
+                <br/>
+                {commentSummary(context, props)}
                 {!!props.name && (
                     <h4 class="tsd-anchor-link">
+                        <a id={props.anchor} class="tsd-anchor"></a>
                         {context.reflectionFlags(props)}
                         <span class={classNames({deprecated: props.isDeprecated()})}>
-              {wbr(props.escapedName || props.name)}
-            </span>
+                             {wbr(props.escapedName || props.name)}
+                         </span>
                         {anchorIcon(context, props.anchor)}
                     </h4>
                 )}
                 {result}
                 {props.groups && (
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>参数</th>
-                            <th>类型</th>
-                            <th>说明</th>
-                            <th>默认值</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        {props.groups?.map((item) =>
-                            item.children.map(
-                                (item) => !item.hasOwnDocument && context.member(item, true)
-                            )
-                        )}
-                        </tbody>
-                    </table>
+                    renderTable(context, props)
                 )}
             </div>
         </section>

@@ -6,7 +6,7 @@ type MinSize = { width: number; height: number };
 /**
  * sxx
  */
-export interface ResizeProps {
+export type ResizeProps= {
   readonly children?: React.ReactNode;
   /** 类名称*/
   className?: string;
@@ -26,6 +26,10 @@ export enum TestEnum {
   枚举1,
   枚举2 = "test",
 }
+
+/**
+ * xxxxcc
+ */
 export interface ResizeProps1 {
   readonly children?: React.ReactNode;
   /**

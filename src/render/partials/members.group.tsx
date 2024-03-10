@@ -29,10 +29,10 @@ export function membersGroup(
         <details class="tsd-panel-group tsd-member-group" open={true}>
             <summary>
                 <h2 style="display:inline" role="button" aria-expanded="false">
-                  <center style="display:inline">
-                    {JSX.cloneElement(icons[group.owningReflection.kind](), {width: 32, height: 32})}
-                    <strong>{group.title}</strong>
-                  </center>
+                    <strong>
+                        {JSX.cloneElement(icons[group.owningReflection.kind](), {width: 32, height: 32})}
+                        {group.title}
+                    </strong>
                 </h2>
             </summary>
             {group.children.map(

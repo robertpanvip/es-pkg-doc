@@ -8,6 +8,7 @@ import * as JSX from "./render/jsx";
 import {packageJson} from "./render/utils/json";
 import {genCases} from "./utils/case";
 import {htmlTableToMd} from "./utils/table";
+import log from "./utils/log";
 
 // 定义全局函数
 global.JSX = JSX;
@@ -17,7 +18,7 @@ process.env["NODE_ENV"] = "production";
 /**
  * 生成doc文档的配置项
  */
-export interface DocOptions {
+export type DocOptions= {
     /** 包名称 */
     name?: string,
     /** 作者 */
@@ -66,7 +67,7 @@ export async function bootstrap(config: DocOptions) {
     try {
         fs.statSync(config.entry)
     } catch (e) {
-        console.error(`${config.entry} not found`)
+        log.error(`${config.entry} not found`)
         return
     }
     const app = await Application.bootstrap({
