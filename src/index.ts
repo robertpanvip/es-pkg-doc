@@ -7,6 +7,7 @@ import {renderServer} from "./render";
 import * as JSX from "./render/jsx";
 import {packageJson} from "./render/utils/json";
 import {genCases} from "./utils/case";
+import {htmlTableToMd} from "./utils/table.ts";
 
 // 定义全局函数
 global.JSX = JSX;
@@ -36,7 +37,9 @@ export interface DocOptions {
     /** 编译后输出的文件名称 @default README*/
     outName?: string,
     /** 生成用法 例子的目录 @default case */
-    caseDir?: string
+    caseDir?: string;
+    /**是否保留为原始htmlTable @default false */
+    keepHtmlTable?: boolean
 }
 
 /**
@@ -47,7 +50,6 @@ export async function bootstrap(config: DocOptions) {
     if (!config.caseDir) {
         config.caseDir = path.join(config.entry, 'case')
     }
-    console.log('caseDir', config.caseDir)
     global.doc = {
         name,
         desc: config.desc || packageJson.description,
@@ -96,30 +98,18 @@ export async function bootstrap(config: DocOptions) {
     }
 
     if (outType.includes('md')) {
-        const htmlToMdService = new HtmlToMdService({
-            /*  defaultReplacement(content, node) {
-                 const tagName = (node as HTMLElement).tagName
-                 if (["SVG"].includes(tagName)) {
-                     console.log("tagName", tagName);
-                     const svg = `<${tagName.toLocaleLowerCase()}>${content}</${tagName.toLocaleLowerCase()}>`
-                     const svgBase64Encoded = Buffer.from(svg).toString('base64');
-                     return `<img src="data:image/svg+xml;base64,${svgBase64Encoded}" />`
-                 }
-                 return content
-             } */
-        })
-        htmlToMdService.keep(["table", "tbody", "thead", "tr", "td", "th"])
+        const htmlToMdService = new HtmlToMdService({})
+        if (!config.keepHtmlTable) {
+            htmlTableToMd(htmlToMdService)
+        } else {
+            htmlToMdService.keep(["table", "tbody", "thead", "tr", "td", "th"])
+        }
         html = html.replaceAll("var(--color-icon-background)", "#f2f4f8")
             .replaceAll("var(--color-text)", "#222")
             .replaceAll(/data-source-[^\s]+=""/g, '')
             .replaceAll(/class--[^\s]+=""/g, '')
             .replaceAll(/\s+class="[^"]*"\s+/g, ' ')
             .replaceAll('<wbr>', "").replaceAll('</wbr>', "");
-        /* .replaceAll(/<svg[^>]*>[\s\S]*?<\/svg>/gi, (match) => {
-            const svgBase64Encoded = Buffer.from(match).toString('base64');
-            return `<img src="data:image/svg+xml;base64,${svgBase64Encoded}" />`
-        }) */
-
         const markdown = htmlToMdService.turndown(html)
         fs.writeFileSync(path.join(config.outDir, `${outName}.md`), markdown)
     }

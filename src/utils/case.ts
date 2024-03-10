@@ -1,7 +1,7 @@
 import path from 'node:path';
-import colors from 'picocolors'
 import fs from 'node:fs';
 import {resolveDefaultFile} from "../render/utils/paths";
+import log from "./log.ts";
 
 function parseImports(fileContent: string) {
     // 读取文件内容
@@ -97,7 +97,7 @@ export function genCases(dir: string, name: string, parse: string): string[] {
             .filter(item => !item.isDirectory)
             .map(item => `${item.content}`)
     } else {
-        console.error(dir + "不存在", colors.red,)
+        log.error(dir + "不存在")
     }
     return []
 }
