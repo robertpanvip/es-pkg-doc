@@ -7,7 +7,7 @@ import {renderServer} from "./render";
 import * as JSX from "./render/jsx";
 import {packageJson} from "./render/utils/json";
 import {genCases} from "./utils/case";
-import {htmlTableToMd} from "./utils/table.ts";
+import {htmlTableToMd} from "./utils/table";
 
 // 定义全局函数
 global.JSX = JSX;

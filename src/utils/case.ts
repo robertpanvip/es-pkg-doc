@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import {resolveDefaultFile} from "../render/utils/paths";
-import log from "./log.ts";
+import log from "./log";
 
 function parseImports(fileContent: string) {
     // 读取文件内容
