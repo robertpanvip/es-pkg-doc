@@ -3,7 +3,7 @@ import type {DefaultThemeRenderContext} from "../DefaultThemeRenderContext";
 import {DeclarationReflection, ReferenceReflection, ReflectionType} from "typedoc";
 import {anchorIcon} from "./anchor-icon";
 import {JSX} from "../jsx";
-import {commentSummary} from "./comment.tsx";
+import {commentSummary} from "./comment";
 
 function defaultValue(props: DeclarationReflection) {
     const value = props.comment?.blockTags.filter(
