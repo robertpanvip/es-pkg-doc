@@ -64,7 +64,9 @@ function getNamespacedPath(reflection: Reflection): Reflection[] {
 function renderUniquePath(context: DefaultThemeRenderContext, reflection: Reflection): JSX.Element {
     return join(<span class="tsd-signature-symbol">.</span>, getUniquePath(reflection), (item) => (
         <a href={context.urlTo(item)} class={"tsd-signature-type " + getKindClass(item)}>
-            {item.name}
+            <code>
+                {item.name}
+            </code>
         </a>
     ));
 }

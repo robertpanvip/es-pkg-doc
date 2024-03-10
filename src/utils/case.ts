@@ -61,13 +61,10 @@ export function genCases(dir: string, name: string, parse: string): string[] {
                 imports.forEach(match => {
                     const requirePath = path.resolve(path.join(item.fullPath, '../',match));
                     const realRequirePath = resolveDefaultFile(requirePath)
-                    console.log('item',item,match);
-                    console.log('xxx',realRequirePath,parse);
                     if (realRequirePath === parse) {
                         _content = _content.replaceAll(match, name)
                     }
                 })
-                console.log(imports)
                 contents.push({
                     fullPath: item.fullPath,
                     isDirectory: item.isDirectory,

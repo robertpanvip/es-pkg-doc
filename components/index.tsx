@@ -12,7 +12,7 @@ export interface ResizeProps {
   className?: string;
   /** 内联样式*/
   style?: React.CSSProperties;
-  /** 最外面包裹的元素 @default "div"*/
+  /** 最外面包裹的元素 @defaultValue div*/
   is?: string;
   /** 宽度和高度的最小值*/
   minSize?: Partial<MinSize> | number;
