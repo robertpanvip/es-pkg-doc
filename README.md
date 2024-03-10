@@ -45,14 +45,14 @@ Renames and re-exports bootstrap
 |参数|类型|说明|默认值|
 |---|---|---|---|
 |author|?: `string`|作者||
-|caseDir|?: `string`|生成用法 例子的目录|\`\`\`ts case \`\`\`|
+|caseDir|?: `string`|生成用法 例子的目录|case|
 |desc|?: `string`|描述||
 |entry|: `string`|编译文件的入口||
-|keepHtmlTable|?: `boolean`|是否保留为原始htmlTable|\`\`\`ts false \`\`\`|
+|keepHtmlTable|?: `boolean`|是否保留为原始htmlTable|false|
 |name|?: `string`|包名称||
 |outDir|: `string`|编译后输出的文件夹||
-|outName|?: `string`|编译后输出的文件名称|\`\`\`ts README \`\`\`|
-|outType|?: `"html"` \| `"md"` \| \[`"html"`, `"md"`\]|编译后输出的类型|\`\`\`ts md \`\`\`|
+|outName|?: `string`|编译后输出的文件名称|README|
+|outType|?: `"html"` \| `"md"` \| \[`"html"`, `"md"`\]|编译后输出的类型|md|
 |repository|?: `string`|仓库地址||
 |tsconfig|?: `string`|编译文件的 ts配置路径||
 
@@ -66,4 +66,4 @@ Renames and re-exports bootstrap
 *   默认 EsPkgDoc的主函数
     
       
-*   bootstrap(config:DocOptions): `Promise`<`void`\>
+*   bootstrap(config:`DocOptions`): `Promise`<`void`\>
