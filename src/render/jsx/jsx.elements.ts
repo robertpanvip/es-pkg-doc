@@ -277,9 +277,9 @@ export interface JsxButtonElementProps extends JsxHtmlGlobalProps {
     form?: string;
     formAction?: string;
     formEnctype?:
-        | "application/x-www-form-urlencoded"
-        | "multipart/form-data"
-        | "text/plain";
+    | "application/x-www-form-urlencoded"
+    | "multipart/form-data"
+    | "text/plain";
     formMethod?: "get" | "post";
     formNoValidate?: boolean;
     formTarget?: "_self" | "_blank" | "_parent" | "_top";
@@ -385,9 +385,9 @@ export interface JsxFormElementProps extends JsxHtmlGlobalProps {
     "accept-charset"?: string;
     action?: string;
     enctype?:
-        | "application/x-www-form-urlencoded"
-        | "multipart/form-data"
-        | "text/plain";
+    | "application/x-www-form-urlencoded"
+    | "multipart/form-data"
+    | "text/plain";
     autocomplete?: string;
     method?: "get" | "post" | "dialog";
     name?: string;
@@ -415,14 +415,14 @@ export interface JsxIframeElementProps extends JsxHtmlGlobalProps {
     height?: number;
     name?: string;
     referrerPolicy?:
-        | "no-referrer"
-        | "no-referrer-when-downgrade"
-        | "origin"
-        | "origin-when-cross-origin"
-        | "same-origin"
-        | "strict-origin"
-        | "strict-origin-when-cross-origin"
-        | "unsafe-url";
+    | "no-referrer"
+    | "no-referrer-when-downgrade"
+    | "origin"
+    | "origin-when-cross-origin"
+    | "same-origin"
+    | "strict-origin"
+    | "strict-origin-when-cross-origin"
+    | "unsafe-url";
     sandbox?: string;
     src?: string;
     srcdoc?: string;
@@ -441,14 +441,14 @@ export interface JsxImgElementProps extends JsxHtmlGlobalProps {
     height?: number;
     isMap?: boolean;
     referrerPolicy?:
-        | "no-referrer"
-        | "no-referrer-when-downgrade"
-        | "origin"
-        | "origin-when-cross-origin"
-        | "same-origin"
-        | "strict-origin"
-        | "strict-origin-when-cross-origin"
-        | "unsafe-url";
+    | "no-referrer"
+    | "no-referrer-when-downgrade"
+    | "origin"
+    | "origin-when-cross-origin"
+    | "same-origin"
+    | "strict-origin"
+    | "strict-origin-when-cross-origin"
+    | "unsafe-url";
     sizes?: string;
     src: string;
     srcset?: string;
@@ -491,28 +491,28 @@ export interface JsxInputElementProps extends JsxHtmlGlobalProps {
     src?: string;
     step?: number;
     type?:
-        | "button"
-        | "checkbox"
-        | "color"
-        | "date"
-        | "datetime-local"
-        | "email"
-        | "file"
-        | "hidden"
-        | "image"
-        | "month"
-        | "number"
-        | "password"
-        | "radio"
-        | "range"
-        | "reset"
-        | "search"
-        | "submit"
-        | "tel"
-        | "text"
-        | "time"
-        | "url"
-        | "week";
+    | "button"
+    | "checkbox"
+    | "color"
+    | "date"
+    | "datetime-local"
+    | "email"
+    | "file"
+    | "hidden"
+    | "image"
+    | "month"
+    | "number"
+    | "password"
+    | "radio"
+    | "range"
+    | "reset"
+    | "search"
+    | "submit"
+    | "tel"
+    | "text"
+    | "time"
+    | "url"
+    | "week";
     value?: string;
     width?: number;
 }
@@ -552,18 +552,18 @@ export interface JsxLiElementProps extends JsxHtmlGlobalProps {
  */
 export interface JsxLinkElementProps extends JsxHtmlGlobalProps {
     as?:
-        | "audio"
-        | "document"
-        | "embed"
-        | "fetch"
-        | "font"
-        | "image"
-        | "object"
-        | "script"
-        | "style"
-        | "track"
-        | "video"
-        | "worker";
+    | "audio"
+    | "document"
+    | "embed"
+    | "fetch"
+    | "font"
+    | "image"
+    | "object"
+    | "script"
+    | "style"
+    | "track"
+    | "video"
+    | "worker";
     crossOrigin?: "anonymous" | "use-credentials";
     disabled?: boolean;
     href?: string;
@@ -592,11 +592,11 @@ export interface JsxMapElementProps extends JsxHtmlGlobalProps {
  */
 export interface JsxMetaElementProps extends JsxHtmlGlobalProps {
     "http-equiv"?:
-        | "content-security-policy"
-        | "content-type"
-        | "default-style"
-        | "x-ua-compatible"
-        | "refresh";
+    | "content-security-policy"
+    | "content-type"
+    | "default-style"
+    | "x-ua-compatible"
+    | "refresh";
     charSet?: "utf-8";
     content?: string;
     name?: string;
@@ -693,14 +693,14 @@ export interface JsxParamElementProps extends JsxHtmlGlobalProps {
  */
 export interface JsxPortalElementProps extends JsxHtmlGlobalProps {
     referrerPolicy?:
-        | "no-referrer"
-        | "no-referrer-when-downgrade"
-        | "origin"
-        | "origin-when-cross-origin"
-        | "same-origin"
-        | "strict-origin"
-        | "strict-origin-when-cross-origin"
-        | "unsafe-url";
+    | "no-referrer"
+    | "no-referrer-when-downgrade"
+    | "origin"
+    | "origin-when-cross-origin"
+    | "same-origin"
+    | "strict-origin"
+    | "strict-origin-when-cross-origin"
+    | "unsafe-url";
     src: string;
 }
 
@@ -735,14 +735,14 @@ export interface JsxScriptElementProps extends JsxHtmlGlobalProps {
     integrity?: string;
     noModule?: boolean;
     referrerPolicy?:
-        | "no-referrer"
-        | "no-referrer-when-downgrade"
-        | "origin"
-        | "origin-when-cross-origin"
-        | "same-origin"
-        | "strict-origin"
-        | "strict-origin-when-cross-origin"
-        | "unsafe-url";
+    | "no-referrer"
+    | "no-referrer-when-downgrade"
+    | "origin"
+    | "origin-when-cross-origin"
+    | "same-origin"
+    | "strict-origin"
+    | "strict-origin-when-cross-origin"
+    | "unsafe-url";
     src?: string;
     type?: "module" | (string & NonNullable<unknown>);
 }
@@ -838,6 +838,7 @@ export interface JsxThElementProps extends JsxHtmlGlobalProps {
     headers?: string;
     rowSpan?: number;
     scope?: "row" | "col" | "rowgroup" | "colgroup";
+    align?: "left" | "right" | "center" | "justify" | "char"
 }
 
 /**
@@ -906,19 +907,19 @@ export interface JsxSvgConditionalProcessingProps {
 
 export interface JsxSvgPresentationProps {
     "alignment-baseline"?:
-        | "baseline"
-        | "text-bottom"
-        | "text-before-edge"
-        | "middle"
-        | "central"
-        | "text-after-edge"
-        | "ideographic"
-        | "alphabetic"
-        | "hanging"
-        | "mathematical"
-        | "top"
-        | "center"
-        | "bottom";
+    | "baseline"
+    | "text-bottom"
+    | "text-before-edge"
+    | "middle"
+    | "central"
+    | "text-after-edge"
+    | "ideographic"
+    | "alphabetic"
+    | "hanging"
+    | "mathematical"
+    | "top"
+    | "center"
+    | "bottom";
     "baseline-shift"?: number | "sub" | "super";
     "clip-path"?: string;
     "clip-rule"?: "nonzero" | "evenodd" | "inherit";
@@ -929,15 +930,15 @@ export interface JsxSvgPresentationProps {
     direction?: "ltr" | "rtl";
     display?: string;
     "dominant-baseline"?:
-        | "auto"
-        | "text-bottom"
-        | "alphabetic"
-        | "ideographic"
-        | "middle"
-        | "central"
-        | "mathematical"
-        | "hanging"
-        | "text-top";
+    | "auto"
+    | "text-bottom"
+    | "alphabetic"
+    | "ideographic"
+    | "middle"
+    | "central"
+    | "mathematical"
+    | "hanging"
+    | "text-top";
     fill?: string;
     "fill-opacity"?: number;
     "fill-rule"?: "nonzero" | "evenodd";
@@ -961,21 +962,21 @@ export interface JsxSvgPresentationProps {
     opacity?: number;
     overflow?: "visible" | "hidden" | "scroll" | "auto";
     "pointer-events"?:
-        | "bounding-box"
-        | "visiblePainted"
-        | "visibleFill"
-        | "visibleStroke"
-        | "visible"
-        | "painted"
-        | "fill"
-        | "stroke"
-        | "all"
-        | "none";
+    | "bounding-box"
+    | "visiblePainted"
+    | "visibleFill"
+    | "visibleStroke"
+    | "visible"
+    | "painted"
+    | "fill"
+    | "stroke"
+    | "all"
+    | "none";
     "shape-rendering"?:
-        | "auto"
-        | "optimizeSpeed"
-        | "crispEdges"
-        | "geometricPrecision";
+    | "auto"
+    | "optimizeSpeed"
+    | "crispEdges"
+    | "geometricPrecision";
     "stop-color"?: string;
     "stop-opacity"?: string;
     stroke?: string;
@@ -989,25 +990,25 @@ export interface JsxSvgPresentationProps {
     "text-anchor"?: "start" | "middle" | "end";
     "text-decoration"?: string;
     "text-rendering"?:
-        | "auto"
-        | "optimizeSpeed"
-        | "optimizeLegibility"
-        | "geometricPrecision";
+    | "auto"
+    | "optimizeSpeed"
+    | "optimizeLegibility"
+    | "geometricPrecision";
     transform?: string;
     "transform-origin"?: string;
     "unicode-bidi"?:
-        | "normal"
-        | "embed"
-        | "isolate"
-        | "bidi-override"
-        | "isolate-override"
-        | "plaintext";
+    | "normal"
+    | "embed"
+    | "isolate"
+    | "bidi-override"
+    | "isolate-override"
+    | "plaintext";
     "vector-effect"?:
-        | "none"
-        | "non-scaling-stroke"
-        | "non-scaling-size"
-        | "non-rotation"
-        | "fixed-position";
+    | "none"
+    | "non-scaling-stroke"
+    | "non-scaling-size"
+    | "non-rotation"
+    | "fixed-position";
     visibility?: "visible" | "hidden" | "collapse";
     "word-spacing"?: string;
     "writing-mode"?: "horizontal-tb" | "vertical-rl" | "vertical-lr";
@@ -1020,18 +1021,17 @@ export interface JsxSvgPresentationProps {
  */
 export interface JsxSvgElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgPresentationProps {
     height?: string | number;
-    preserveAspectRatio?: `${
-        | "none"
-        | "xMinYMin"
-        | "xMaxYMin"
-        | "xMinYMid"
-        | "xMaxYMid"
-        | "xMinYMax"
-        | "xMidYMax"
-        | "xMaxYMax"}${"" | " meet" | " slice"}`;
+    preserveAspectRatio?: `${| "none"
+    | "xMinYMin"
+    | "xMaxYMin"
+    | "xMinYMid"
+    | "xMaxYMid"
+    | "xMinYMax"
+    | "xMidYMax"
+    | "xMaxYMax"}${"" | " meet" | " slice"}`;
     viewBox?: string;
     width?: string | number;
     x?: string | number;
@@ -1045,9 +1045,9 @@ export interface JsxSvgElementProps
  */
 export interface JsxGElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
 }
 
 /**
@@ -1057,9 +1057,9 @@ export interface JsxGElementProps
  */
 export interface JsxPathElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     d: string;
     pathLength?: number;
 }
@@ -1071,9 +1071,9 @@ export interface JsxPathElementProps
  */
 export interface JsxRectElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     height?: string | number;
     pathLength?: number;
     rx?: string | number;
@@ -1090,9 +1090,9 @@ export interface JsxRectElementProps
  */
 export interface JsxCircleElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     cx?: string | number;
     cy?: string | number;
     r?: string | number;
@@ -1106,9 +1106,9 @@ export interface JsxCircleElementProps
  */
 export interface JsxEllipseElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     cx?: string | number;
     cy?: string | number;
     rx?: string | number;
@@ -1123,9 +1123,9 @@ export interface JsxEllipseElementProps
  */
 export interface JsxPolygonElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     points?: string;
     pathLength?: number;
 }
@@ -1136,9 +1136,9 @@ export interface JsxPolygonElementProps
  */
 export interface JsxPolylineElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     points?: string;
     pathLength?: number;
 }
@@ -1150,9 +1150,9 @@ export interface JsxPolylineElementProps
  */
 export interface JsxUseElementProps
     extends JsxSvgCoreProps,
-        JsxSvgStyleProps,
-        JsxSvgConditionalProcessingProps,
-        JsxSvgPresentationProps {
+    JsxSvgStyleProps,
+    JsxSvgConditionalProcessingProps,
+    JsxSvgPresentationProps {
     href: string;
     x?: string | number;
     y?: string | number;
