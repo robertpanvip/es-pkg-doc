@@ -1,5 +1,6 @@
 import path from 'node:path'
-import doc, {DocOptions} from "./src";
+import doc from "./src/doc";
+import {DocOptions} from "./src";
 
 const cwd = process.cwd();
 const file = path.join(cwd, './components/index.tsx')
@@ -9,7 +10,6 @@ const config: DocOptions = {
     tsconfig: path.join(cwd, './components/tsconfig.json'),
     entry: file,
     outDir: path.join(cwd, './components'),
-    caseDir:path.join(cwd, './components/case'),
     outType:["html","md"]
 }
 

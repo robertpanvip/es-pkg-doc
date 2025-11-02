@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "js-beautify": "^1.15.1",
+    "markdown-table": "^3.0.4",
+    "ts-morph": "^27.0.2",
     "turndown": "^7.1.2",
     "typedoc": "^0.25.9"
   },
