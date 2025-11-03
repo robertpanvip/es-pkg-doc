@@ -1,7 +1,6 @@
-import {packageJson} from "./render/utils/json.ts";
-import {ComponentMsg, Exports, JSDoc, JSDocTag, PropertiesDoc, ToExports} from "./type.ts";
+import {ComponentMsg, Exports, JSDoc, JSDocTag, PropertiesDoc, ToExports} from "./type";
 import {markdownTable} from 'markdown-table';
-import fs from 'node:fs'
+import { pkg  } from "./util";
 
 function getJSDocTags(doc: JSDoc[]) {
     return doc.flatMap(d => d.tags.flatMap(t => [t]));
@@ -81,24 +80,24 @@ function cleanImportType(typeStr?: string) {
 function toDemo(item: Exports) {
     return item.component.isReact ? `#### 🧾 示例
 \`\`\`tsx
-import ${item.isDefaultExport ? item.name : `{${item.name}}`} from '${packageJson.name}'
+import ${item.isDefaultExport ? item.name : `{${item.name}}`} from '${pkg.name}'
 function App(){
     return <${item.name} ${item.component.properties?.filter(p => !p.isOptional).map(p => `${p.name}={xxx}`) || ""} />
 }
 \`\`\`` : ""
 }
 
-export function toMD(v: ToExports,output:string) {
+export function toMD(v: ToExports) {
     const sorter = {default: 0, exports: 1, interface: 2} as Record<string, number>;
     const _v = Object.entries(v).sort((a, b) => sorter[a[0]] - sorter[b[0]])
-    let md = `${packageJson.name}
+    let md = `${pkg.name}
 ===========
-${packageJson.description}\n
+${pkg.description}\n
 
 [![NPM Version](https://img.shields.io/npm/v/@es-pkg/doc?color=33cd56&logo=npm)](https://www.npmjs.com/package/@es-pkg/doc)  [![NPM Version](https://img.shields.io/npm/dm/@es-pkg/doc.svg?style=flat-square)](https://www.npmjs.com/package/@es-pkg/doc)  [![unpacked size](https://img.shields.io/npm/unpacked-size/@es-pkg/doc?color=green)](https://www.npmjs.com/package/@es-pkg/doc)  [![Author](https://img.shields.io/badge/docs_by-robertpanvip-blue)](https://github.com/robertpanvip/es-pkg-doc.git)
 
 ## 🔧 Install
-    npm install ${packageJson.name}`
+    npm install ${pkg.name}`
     md += _v.flatMap(([_, v]) => {
         return v.map(item => {
             //const propsType = cleanImportType(item.component.props?.getText());
@@ -113,8 +112,6 @@ ${toRef(item.component)}
 ${toDemo(item)}
 `;
         })
-    }).join('\n')
-    fs.writeFileSync(output, md)
-    //console.log(md)
+    }).join('\n');
     return md;
 }

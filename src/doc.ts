@@ -1,9 +1,81 @@
-import {JSDocableNode, Symbol as MorphSymbol, Node, EnumMember, PropertySignature, TypeElementTypes} from "ts-morph";
-import {DocOptions, JSDoc, PropertiesDoc} from "./type";
-import {packageJson} from "./render/utils/json";
+import {EnumMember, JSDocableNode, Node, PropertySignature, Symbol as MorphSymbol, TypeElementTypes, Project} from "ts-morph";
+import {DocOptions, JSDoc, PropertiesDoc, ToExports} from "./type";
 import fs from 'node:fs'
-import log from "./utils/log";
-import {main} from "./check";
+import log from "@es-pkg/utils";
+import path from 'node:path'
+import {groupBy, pkg, pkg as packageJson} from "./util";
+import {toMD} from "./output.ts";
+import {getComponent} from "./check.ts";
+
+export * from './type'
+
+export function getExports(symbols: MorphSymbol[]):ToExports {
+    const result = symbols.flatMap(symbol => {
+        let name = symbol.getName();
+        let decl = symbol.getDeclarations()?.[0];
+        let isDefaultExport = false;
+        if (Node.isExportAssignment(decl)) {
+            const expression = decl.getExpression();
+            if (symbol.getName() === 'default') {
+                if (Node.isIdentifier(expression)) {
+                    name = expression.getText();
+                    decl = expression.getDefinitionNodes()[0];
+                } else {
+                    name = pkg.name;
+                    decl = expression;
+                }
+            }
+            isDefaultExport = true;
+        }
+        const info = getComponent(decl);
+        if (info.isReact) {
+            {
+                const sys = info.props?.getSymbol();
+                const def = sys?.getDeclarations()[0];
+                if (def) {
+                    info.properties = getPropertiesDoc(def);
+                }
+            }
+            {
+                const sys = info.ref?.getSymbol();
+                const def = sys?.getDeclarations()[0];
+                if (def) {
+                    info.refProperties = getPropertiesDoc(def);
+                }
+            }
+
+        }else{
+
+            if(['TypeAliasDeclaration', "InterfaceDeclaration", "EnumDeclaration"].includes(decl.getKindName())){
+
+                const def= decl.getType().getSymbol()?.getDeclarations()[0];
+
+                if(def){
+                    info.properties = getPropertiesDoc(def);
+                    //console.log(decl.getType().getText(),def.getKindName());
+                }
+
+            }
+        }
+        return {
+            component: info,
+            name,
+            doc: jsDoc(symbol),
+            isDefaultExport,
+            type:decl.getType().getText(),
+            kind: decl.getKindName()
+        };
+    })
+    return groupBy(result, (r) => {
+        if (r.isDefaultExport) {
+            return "default";
+        }
+        if (['TypeAliasDeclaration', "InterfaceDeclaration", "EnumDeclaration"].includes(r.kind)) {
+            return 'interface'
+        }
+        return "exports"
+    });
+}
 
 export function jsDoc(symbol?: MorphSymbol): JSDoc[] {
     if (!symbol) {
@@ -42,7 +114,6 @@ export function jsDoc(symbol?: MorphSymbol): JSDoc[] {
         }
     ));
 }
-
 
 // 辅助函数：从声明中找到最原始的 JSDocableNode（处理引用嵌套）
 function getJSDocableNodeFromDeclaration(decl: Node): JSDocableNode | null {
@@ -124,11 +195,7 @@ export function getPropertiesDoc(decl: Node) {
     return docs
 }
 
-
-/**
- * 默认 EsPkgDoc的主函数
- */
-export async function bootstrap(config: DocOptions) {
+function getMergedConfig(config: DocOptions) {
     const name = config.name || packageJson.name;
     const doc = {
         name,
@@ -137,17 +204,38 @@ export async function bootstrap(config: DocOptions) {
         repository: config.repository || packageJson.repository?.url,
         ...config,
     }
-    const outName = config.outName || 'README';
-    let outType: string[] = (config.outType || ["md"]) as string[];
+    const outType: string[] = (config.outType || ["md"]) as string[];
     if (!Array.isArray(outType)) {
-        outType = [outType]
+        doc.outType = [outType] as unknown as ["html", "md"]
     }
-    try {
-        fs.statSync(config.entry)
-    } catch (e) {
-        log.error(`${config.entry} not found`)
-        return
-    }
-    main(doc.entry, doc.tsconfig!, outName + ".md");
+    return doc
 }
+
+export function setup(config: DocOptions): string {
+    const _config = getMergedConfig(config)
+    try {
+        fs.statSync(_config.entry)
+    } catch (e) {
+        log.error(`${_config.entry} not found`)
+        return "";
+    }
+    const project = new Project({
+        tsConfigFilePath: _config.tsconfig!,
+    });
+    const sourceFile = project.addSourceFileAtPath(_config.entry);
+    const exports = sourceFile.getExportSymbols();
+    const v = getExports(exports);
+    return toMD(v);
+}
+
+
+/**
+ * 默认 EsPkgDoc的主函数
+ */
+export function bootstrap(config: DocOptions) {
+    const outName = config.outName || 'README';
+    const md = setup(config);
+    fs.writeFileSync(path.join(config.outDir, `${outName}.md`), md)
+}
+
 export default bootstrap;

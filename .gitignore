@@ -25,4 +25,5 @@ dist-ssr
 /es/
 /lib/
 /bin/
+/npm/
 .history

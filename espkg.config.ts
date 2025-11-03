@@ -1,5 +1,6 @@
-import {defineConfig} from "es-pkg";
+import defineConfig from "es-pkg";
 
 export default defineConfig({
-    "entry":"./src/index.ts"
+    es: "npm/esm",
+    entry: "./src/doc.ts"
 })
